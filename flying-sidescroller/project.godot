@@ -11,4 +11,5 @@ config_version=5
 [application]
 
 config/name="Flying-Sidescroller"
+run/main_scene="uid://cecnfq0wo0b0w"
 config/features=PackedStringArray("4.4", "Forward Plus")
