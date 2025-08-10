@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
-var player_health : int = 100
+class_name Player
+
+signal health_changed
+
+const PLAYER_MAX_HEALTH : int = 100
+var player_current_health : int = PLAYER_MAX_HEALTH
 @export var player_movement_speed : int = 1000
 const PLAYER_START_HORIZONTAL_SPEED : int = 10
 const PLAYER_MAX_HORIZONTAL_SPEED : int = 25
@@ -12,6 +17,10 @@ func _process(_delta) -> void:
 	
 	$".".position.x += speed
 	$".".get_parent().get_node("Camera2D").position.x += speed
+	
+	if Input.is_key_pressed(KEY_E):
+		player_current_health -= 25
+		health_changed.emit()
 
 func _physics_process(_delta) -> void:
 	character_direction.y = Input.get_axis("move_up", "move_down")
