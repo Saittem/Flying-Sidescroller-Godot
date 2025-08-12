@@ -1,9 +1,9 @@
 extends ProgressBar
 
-@export var player : Player
+@onready var player := $"../../Player"
 
 func _ready() -> void:
-	player.health_changed.connect(updateHealthBar())
+	player.health_changed.connect(updateHealthBar)
 	updateHealthBar()
 
 func updateHealthBar():
