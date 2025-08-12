@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://qgauwa4fng58"]
+
+[ext_resource type="Texture2D" uid="uid://1wluqcu4h8qk" path="res://sprites/tree-obstacle.png" id="1_a2vlf"]
+
+[node name="TreeObstacle" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.71709, 0.71709)
+texture = ExtResource("1_a2vlf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-11, 6)
+scale = Vector2(0.77227, 0.77227)
+polygon = PackedVector2Array(10, -622, -207, -130, -141, 616, 170, 620, 228, -5, 97, -563)

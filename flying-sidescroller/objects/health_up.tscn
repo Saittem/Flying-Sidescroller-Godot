@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://blx2hyvaf2k2j"]
+
+[ext_resource type="Texture2D" uid="uid://cghf1a76wbl31" path="res://sprites/hp.png" id="1_vxou8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cceiu"]
+size = Vector2(50, 50)
+
+[node name="HealthUp" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vxou8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cceiu")

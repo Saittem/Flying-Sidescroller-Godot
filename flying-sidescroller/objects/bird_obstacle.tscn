@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://c05e6eijwcgub"]
+
+[ext_resource type="Texture2D" uid="uid://cfo8kb65wgn7j" path="res://sprites/BirdSpriteBig.png" id="1_vnly7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsnjd"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(0, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wwu7"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(160, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cxc1"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(320, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhgbt"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(480, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbyw3"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(640, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrlt0"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(800, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yawk"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(960, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s8v1"]
+atlas = ExtResource("1_vnly7")
+region = Rect2(1120, 160, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olvrs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsnjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wwu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cxc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhgbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbyw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrlt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yawk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s8v1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qr4"]
+size = Vector2(37, 20)
+
+[node name="BirdObstacle" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.13687e-13, 2.38419e-07)
+scale = Vector2(0.21875, 0.21875)
+sprite_frames = SubResource("SpriteFrames_olvrs")
+frame_progress = 0.603021
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_d7qr4")
