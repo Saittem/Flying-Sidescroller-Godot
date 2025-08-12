@@ -4,6 +4,7 @@ class_name Player
 
 signal health_changed
 
+@onready var player = $"."
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
 @export var player_movement_speed : int = 1000
@@ -15,8 +16,7 @@ var character_direction : Vector2
 func _process(_delta) -> void:
 	speed = PLAYER_START_HORIZONTAL_SPEED
 	
-	$".".position.x += speed
-	$".".get_parent().get_node("Camera2D").position.x += speed
+	player.position.x += speed
 	
 	if Input.is_key_pressed(KEY_E):
 		player_current_health -= 25
