@@ -13,7 +13,7 @@ script = ExtResource("1_btoec")
 [node name="level_1_background" parent="." instance=ExtResource("1_vn7o3")]
 
 [node name="Player" parent="." instance=ExtResource("2_jirdo")]
-position = Vector2(316, 329)
+position = Vector2(225, 329)
 player_movement_speed = 500
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -36,3 +36,7 @@ offset_top = 584.0
 offset_right = 358.0
 offset_bottom = 617.0
 script = ExtResource("5_n46q3")
+
+[node name="ObjectSpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ObjectSpawnTimer" to="." method="_on_object_spawn_timer_timeout"]
