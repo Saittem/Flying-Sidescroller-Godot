@@ -12,17 +12,13 @@ script = ExtResource("1_btoec")
 
 [node name="level_1_background" parent="." instance=ExtResource("1_vn7o3")]
 
+[node name="Boundary" parent="." instance=ExtResource("3_bt44k")]
+
 [node name="Player" parent="." instance=ExtResource("2_jirdo")]
 position = Vector2(225, 329)
-player_movement_speed = 500
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
-
-[node name="Boundary" parent="." instance=ExtResource("3_bt44k")]
-
-[node name="Boundary2" parent="." instance=ExtResource("3_bt44k")]
-position = Vector2(0, 648)
 
 [node name="HUD" parent="." instance=ExtResource("4_kx6l7")]
 anchors_preset = 10

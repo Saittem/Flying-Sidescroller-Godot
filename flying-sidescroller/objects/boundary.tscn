@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpgokwdjxrigt"]
+[gd_scene load_steps=3 format=3 uid="uid://bpgokwdjxrigt"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_qa0rq"]
 b = Vector2(1152, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4286h"]
+a = Vector2(1141, 480)
+b = Vector2(-11, 480)
 
 [node name="Boundary" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_qa0rq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(11, 168)
+shape = SubResource("SegmentShape2D_4286h")

@@ -2,6 +2,9 @@ extends Node
 
 @onready var player := $"Player"
 @onready var object_spawn_timer := $"ObjectSpawnTimer"
+@onready var boundary := $"Boundary"
+@onready var camera := $"Camera2D"
+@onready var hud := $"HUD"
 var health_up_object = preload("res://objects/health_up.tscn")
 var power_up_object = preload("res://objects/power_up.tscn")
 var bird_obstacle = preload("res://objects/bird_obstacle.tscn")
@@ -11,15 +14,17 @@ var screen_size : Vector2i
 var obstacle_types := [bird_obstacle, tree_obstacle]
 var power_up_types := [health_up_object, power_up_object]
 var objects : Array
-
+@export var speed: int = 10
 
 func _ready() -> void:
 	screen_size = get_window().size
 	object_spawn_timer.start()
 
 func _process(_delta) -> void:
-	$"Camera2D".position.x += player.speed
-	$"HUD".position.x += player.speed
+	camera.position.x += speed
+	hud.position.x += speed
+	boundary.position.x += speed
+	player.position.x += speed
 
 func _on_object_spawn_timer_timeout() -> void:
 	var rounded_time_str = str(snapped(object_spawn_timer.wait_time, 0.01))

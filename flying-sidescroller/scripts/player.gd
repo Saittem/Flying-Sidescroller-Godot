@@ -4,39 +4,36 @@ class_name Player
 
 signal health_changed
 
-@onready var player = $"."
+@export var player_movement_speed: float = 500
+
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
-@export var player_movement_speed : int = 1000
-const PLAYER_START_HORIZONTAL_SPEED : int = 10
-const PLAYER_MAX_HORIZONTAL_SPEED : int = 25
-var speed : float
-var character_direction : Vector2
 
-func _process(_delta) -> void:
-	speed = PLAYER_START_HORIZONTAL_SPEED
-	
-	player.position.x += speed
-	
-	if Input.is_key_pressed(KEY_E):
-		player_current_health -= 25
-		health_changed.emit()
+func _physics_process(delta) -> void:
+	get_input()
+	move_and_slide()
+	update_animation()
 
-func _physics_process(_delta) -> void:
-	character_direction.y = Input.get_axis("move_up", "move_down")
+
+func get_input():
+	var character_direction_y: float = Input.get_axis("move_up", "move_down")
 	
-	if character_direction:
-		velocity.y = character_direction.y * player_movement_speed
-		if Input.is_action_pressed("move_up") and $AnimatedSprite2D.animation != "up":
-			$AnimatedSprite2D.play("up")
-		elif Input.is_action_pressed("move_down") and $AnimatedSprite2D.animation != "down":
-			$AnimatedSprite2D.play("down")
-		elif not Input.is_action_just_pressed("move_up") and $AnimatedSprite2D.animation == "up":
-			$AnimatedSprite2D.play_backwards("up")
-		elif not Input.is_action_just_pressed("move_down") and $AnimatedSprite2D.animation == "down":
-			$AnimatedSprite2D.play_backwards("down")
+	if character_direction_y != 0:
+		velocity.y = character_direction_y * player_movement_speed
 	else:
 		velocity.y = velocity.move_toward(Vector2.ZERO, player_movement_speed).y
 
-	
-	move_and_slide()
+
+func update_animation():
+	if velocity.y > 0:
+		$AnimatedSprite2D.play("down")
+	elif velocity.y < 0:
+		$AnimatedSprite2D.play("up")
+	else:
+		$AnimatedSprite2D.play("idle")
+
+func take_damage(damage: int):
+	player_current_health -= damage
+	emit_signal("health_changed", player_current_health)
+	if player_current_health <= 0:
+		pass
