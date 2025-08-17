@@ -102,3 +102,11 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.08594, -2)
 shape = SubResource("RectangleShape2D_bwjto")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.08594, -2)
+shape = SubResource("RectangleShape2D_bwjto")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
