@@ -67,17 +67,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qr4"]
-size = Vector2(37, 20)
+size = Vector2(48, 28)
 
 [node name="BirdObstacle" type="Area2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1.13687e-13, 2.38419e-07)
-scale = Vector2(0.21875, 0.21875)
+scale = Vector2(0.313281, 0.313281)
 sprite_frames = SubResource("SpriteFrames_olvrs")
 autoplay = "default"
 frame_progress = 0.603021
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_d7qr4")
