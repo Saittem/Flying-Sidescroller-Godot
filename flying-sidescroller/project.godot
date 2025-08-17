@@ -18,6 +18,13 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+light_damage=""
+health_up=""
+power_up=""
+heavy_damage=""
+
 [input]
 
 move_up={
