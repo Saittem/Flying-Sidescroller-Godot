@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://1wluqcu4h8qk" path="res://sprites/tree-obstacle.png" id="1_a2vlf"]
 
-[node name="TreeObstacle" type="Area2D"]
+[node name="TreeObstacle" type="Area2D" groups=["heavy_damage"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.38419e-07, 2.38419e-07)
