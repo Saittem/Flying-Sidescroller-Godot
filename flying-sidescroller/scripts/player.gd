@@ -14,6 +14,15 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 	update_animation()
 
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("light_damage"):
+		change_health(-25)
+	elif area.is_in_group("heavy_damage"):
+		change_health(-50)
+	elif area.is_in_group("health_up"):
+		change_health(25)
+	elif area.is_in_group("power_up"):
+		pass
 
 func get_input():
 	var character_direction_y: float = Input.get_axis("move_up", "move_down")
@@ -23,7 +32,6 @@ func get_input():
 	else:
 		velocity.y = velocity.move_toward(Vector2.ZERO, player_movement_speed).y
 
-
 func update_animation():
 	if velocity.y > 0:
 		$AnimatedSprite2D.play("down")
@@ -32,8 +40,11 @@ func update_animation():
 	else:
 		$AnimatedSprite2D.play("idle")
 
-func take_damage(damage: int):
-	player_current_health -= damage
-	emit_signal("health_changed", player_current_health)
-	if player_current_health <= 0:
-		pass
+func change_health(health_difference: int):
+	player_current_health += health_difference
+	if player_current_health > 100:
+		player_current_health = 100
+	else:
+		health_changed.emit()
+		if player_current_health <= 0:
+			pass
