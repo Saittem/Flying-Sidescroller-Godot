@@ -1,2 +1,2 @@
-# Flying+Sidescroller-Godot
+# Flying Sidescroller Game
 
