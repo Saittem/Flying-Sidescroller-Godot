@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqmrqmd218sfj"
-path="res://.godot/imported/Shield Round Hex Pulse Loop 256x256 Green.png-fc64e84ac166269c1816598b8f762611.ctex"
+uid="uid://clrtdwhbxrmew"
+path="res://.godot/imported/Shield Elliptic Hex Scan Loop 192x256 Green.png-c8d23222bedc29626c9f81f216884c34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Shield Round Hex Pulse Loop 256x256 Green.png"
-dest_files=["res://.godot/imported/Shield Round Hex Pulse Loop 256x256 Green.png-fc64e84ac166269c1816598b8f762611.ctex"]
+source_file="res://sprites/Shield Elliptic Hex Scan Loop 192x256 Green.png"
+dest_files=["res://.godot/imported/Shield Elliptic Hex Scan Loop 192x256 Green.png-c8d23222bedc29626c9f81f216884c34.ctex"]
 
 [params]
 
