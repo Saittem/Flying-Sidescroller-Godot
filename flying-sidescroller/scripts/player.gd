@@ -5,6 +5,7 @@ class_name Player
 signal health_changed
 
 @export var player_movement_speed: float = 500
+@onready var player_animation_sprite = $PlayerAnimation
 
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
@@ -34,11 +35,11 @@ func get_input():
 
 func update_animation():
 	if velocity.y > 0:
-		$AnimatedSprite2D.play("down")
+		player_animation_sprite.play("down")
 	elif velocity.y < 0:
-		$AnimatedSprite2D.play("up")
+		player_animation_sprite.play("up")
 	else:
-		$AnimatedSprite2D.play("idle")
+		player_animation_sprite.play("idle")
 
 func change_health(health_difference: int):
 	player_current_health += health_difference
