@@ -25,6 +25,10 @@ func _process(_delta) -> void:
 	hud.position.x += speed
 	boundary.position.x += speed
 	player.position.x += speed
+	
+	for object in objects:
+		if object.position.x < -(camera.position.x + screen_size.x / 2 + 100):
+			remove_object(object)
 
 func _on_object_spawn_timer_timeout() -> void:
 	var rounded_time_str = str(snapped(object_spawn_timer.wait_time, 0.01))
@@ -34,14 +38,14 @@ func _on_object_spawn_timer_timeout() -> void:
 
 func generate_object():
 	var object_type
-	if (randi() % 20) < 19:
+	if (randi() % 20) > 19:
 		object_type = obstacle_types[randi() % obstacle_types.size()]
 	else:
 		object_type = power_up_types[randi() % power_up_types.size()]
 	
 	var object
 	object = object_type.instantiate()
-	var object_x = $"Camera2D".position.x + screen_size.x / 2 + 100
+	var object_x = camera.position.x + screen_size.x / 2 + 100
 	var object_y
 	
 	match object.name:
@@ -61,3 +65,7 @@ func add_object(object, x, y):
 	object.position = Vector2i(x, y)
 	add_child(object)
 	objects.append(object)
+
+func remove_object(object):
+	object.queue_free()
+	objects.erase(object)
