@@ -36,9 +36,9 @@ func _on_object_spawn_timer_timeout() -> void:
 	generate_object()
 	object_spawn_timer.wait_time = randf_range(1.0, 2.25)
 
-func generate_object():
+func generate_object() -> void:
 	var object_type
-	if (randi() % 20) > 19:
+	if (randi() % 20) < 19:
 		object_type = obstacle_types[randi() % obstacle_types.size()]
 	else:
 		object_type = power_up_types[randi() % power_up_types.size()]
@@ -61,11 +61,11 @@ func generate_object():
 	print("Y: " + str(object_y))
 	add_object(object, object_x, object_y)
 
-func add_object(object, x, y):
+func add_object(object, x, y) -> void:
 	object.position = Vector2i(x, y)
 	add_child(object)
 	objects.append(object)
 
-func remove_object(object):
+func remove_object(object) -> void:
 	object.queue_free()
 	objects.erase(object)
