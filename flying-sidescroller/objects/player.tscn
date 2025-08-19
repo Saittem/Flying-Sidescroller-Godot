@@ -253,8 +253,56 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7rsoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nflk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqwil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggel1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8ffw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ve04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rhe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ypbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rsoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nflk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqwil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggel1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8ffw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ve04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rhe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ypbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rsoo")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
@@ -294,6 +342,8 @@ frame_progress = 0.507481
 visible = false
 scale = Vector2(0.529297, 0.529297)
 sprite_frames = SubResource("SpriteFrames_lywsn")
-frame_progress = 0.0963525
+frame = 23
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="animation_finished" from="ParticleAnimation" to="." method="_on_particle_animation_animation_finished"]
