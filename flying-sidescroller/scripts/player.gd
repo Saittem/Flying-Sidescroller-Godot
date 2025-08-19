@@ -11,6 +11,7 @@ signal health_changed
 
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
+var invincibility_toggle : bool = false
 
 func _physics_process(delta) -> void:
 	get_input()
@@ -28,7 +29,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		activate_shield()
 		area.queue_free()
 
-func get_input():
+func get_input() -> void:
 	var character_direction_y: float = Input.get_axis("move_up", "move_down")
 	
 	if character_direction_y != 0:
@@ -36,10 +37,10 @@ func get_input():
 	else:
 		velocity.y = velocity.move_toward(Vector2.ZERO, player_movement_speed).y
 
-func activate_shield():
+func activate_shield() -> void:
 	player_shield_animation.visible = true
 
-func deactivate_shield():
+func deactivate_shield() -> void:
 	player_particle_animation.visible = true
 	player_particle_animation.play("default")
 
@@ -47,7 +48,7 @@ func _on_particle_animation_animation_finished() -> void:
 	player_particle_animation.visible = false
 	player_shield_animation.visible = false
 
-func update_animation():
+func update_animation() -> void:
 	if velocity.y > 0:
 		player_animation_sprite.play("down")
 	elif velocity.y < 0:
@@ -55,14 +56,34 @@ func update_animation():
 	else:
 		player_animation_sprite.play("idle")
 
-func change_health(health_difference: int):
-	if !player_shield_animation.visible or health_difference > 0:
-		player_current_health += health_difference
-		if player_current_health > 100:
-			player_current_health = 100
-		else:
-			health_changed.emit()
-			if player_current_health <= 0:
-				pass
+func toggle_invincibility() -> void:
+	if invincibility_toggle:
+		invincibility_toggle = false
 	else:
-		deactivate_shield()
+		invincibility_toggle = true
+		for i in range(4):
+			player_animation_sprite.visible = !player_animation_sprite.visible
+			wait(0.5)
+			player_animation_sprite.visible = !player_animation_sprite.visible
+			wait(1)
+			print("cycle " + str(i))
+		toggle_invincibility()
+
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+
+func change_health(health_difference: int) -> void:
+	if !invincibility_toggle:
+		if !player_shield_animation.visible or health_difference > 0:
+			player_current_health += health_difference
+			if player_current_health > 100:
+				player_current_health = 100
+			else:
+				health_changed.emit()
+				if health_difference < 0:
+					toggle_invincibility()
+				if player_current_health <= 0:
+					pass
+		else:
+			deactivate_shield()
+			toggle_invincibility()
