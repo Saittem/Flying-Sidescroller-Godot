@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cecnfq0wo0b0w"]
+[gd_scene load_steps=6 format=3 uid="uid://cecnfq0wo0b0w"]
 
 [ext_resource type="Script" uid="uid://dkm8nsw37ut5x" path="res://scripts/main.gd" id="1_btoec"]
 [ext_resource type="PackedScene" uid="uid://cnc1kq8ndkl6c" path="res://backgrounds/background_scenes/level_1_background.tscn" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://b40hks2sfoav1" path="res://objects/player.tscn" id="2_jirdo"]
 [ext_resource type="PackedScene" uid="uid://bpgokwdjxrigt" path="res://objects/boundary.tscn" id="3_bt44k"]
 [ext_resource type="PackedScene" uid="uid://bvoxjucdyfiif" path="res://hud.tscn" id="4_kx6l7"]
-[ext_resource type="Script" uid="uid://c4wdy17fgt2pq" path="res://scripts/health_bar.gd" id="5_n46q3"]
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_btoec")
 
 [node name="level_1_background" parent="." instance=ExtResource("1_vn7o3")]
+
+[node name="HUD" parent="." instance=ExtResource("4_kx6l7")]
+z_index = 1
 
 [node name="Boundary" parent="." instance=ExtResource("3_bt44k")]
 
@@ -19,19 +21,6 @@ position = Vector2(225, 329)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
-
-[node name="HUD" parent="." instance=ExtResource("4_kx6l7")]
-anchors_preset = 10
-anchor_bottom = 0.0
-grow_vertical = 1
-
-[node name="HealthBar2" type="ProgressBar" parent="HUD"]
-layout_mode = 0
-offset_left = 69.0
-offset_top = 584.0
-offset_right = 358.0
-offset_bottom = 617.0
-script = ExtResource("5_n46q3")
 
 [node name="ObjectSpawnTimer" type="Timer" parent="."]
 
