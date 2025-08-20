@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvoxjucdyfiif"]
+[gd_scene load_steps=5 format=3 uid="uid://bvoxjucdyfiif"]
 
 [ext_resource type="Script" uid="uid://c4wdy17fgt2pq" path="res://scripts/health_bar.gd" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://fjc0hga2jqk" path="res://sprites/health_bar_background.png" id="1_640wx"]
+[ext_resource type="Texture2D" uid="uid://6wmktfrnpofk" path="res://sprites/health_bar_overlay.png" id="2_a2258"]
+[ext_resource type="Texture2D" uid="uid://bj7cevpy26wqp" path="res://sprites/health_bar_progress.png" id="3_1xsix"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -10,10 +13,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 584.0
-offset_right = 358.0
-offset_bottom = 617.0
+offset_left = 51.0
+offset_top = 585.0
+offset_right = 419.0
+offset_bottom = 627.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_640wx")
+texture_over = ExtResource("2_a2258")
+texture_progress = ExtResource("3_1xsix")
 script = ExtResource("1_37p78")
