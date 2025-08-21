@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp32oepwuobro"]
+
+[ext_resource type="Script" uid="uid://dkm8nsw37ut5x" path="res://scripts/main.gd" id="1_5722l"]
+[ext_resource type="PackedScene" uid="uid://jng0jkg4dkt2" path="res://backgrounds/background_scenes/level_2_background.tscn" id="2_5722l"]
+[ext_resource type="PackedScene" uid="uid://bvoxjucdyfiif" path="res://hud.tscn" id="3_ep78u"]
+[ext_resource type="PackedScene" uid="uid://bpgokwdjxrigt" path="res://objects/boundary.tscn" id="4_dfjjl"]
+[ext_resource type="PackedScene" uid="uid://b40hks2sfoav1" path="res://objects/player.tscn" id="5_at1ld"]
+
+[node name="Level_2" type="Node2D"]
+script = ExtResource("1_5722l")
+
+[node name="level_2_background" parent="." instance=ExtResource("2_5722l")]
+
+[node name="HUD" parent="." instance=ExtResource("3_ep78u")]
+
+[node name="Boundary" parent="." instance=ExtResource("4_dfjjl")]
+
+[node name="Player" parent="." instance=ExtResource("5_at1ld")]
+position = Vector2(225, 329)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="ObjectSpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ObjectSpawnTimer" to="." method="_on_object_spawn_timer_timeout"]

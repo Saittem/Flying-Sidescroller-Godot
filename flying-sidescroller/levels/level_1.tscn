@@ -12,7 +12,6 @@ script = ExtResource("1_btoec")
 [node name="level_1_background" parent="." instance=ExtResource("1_vn7o3")]
 
 [node name="HUD" parent="." instance=ExtResource("4_kx6l7")]
-z_index = 1
 
 [node name="Boundary" parent="." instance=ExtResource("3_bt44k")]
 
