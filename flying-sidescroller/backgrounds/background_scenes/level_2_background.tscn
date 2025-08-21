@@ -10,32 +10,28 @@
 
 [node name="level_2_background" type="ParallaxBackground"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.7, 0.7)
-motion_mirroring = Vector2(1151.4, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 304)
 scale = Vector2(0.606316, 0.606667)
 texture = ExtResource("1_sdbco")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.7, 0.7)
-motion_mirroring = Vector2(1151.4, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
-position = Vector2(576, 364)
-scale = Vector2(0.606316, 0.606667)
-texture = ExtResource("2_2pbdg")
-
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.7, 0.7)
+motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1151.4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
 position = Vector2(577, 304)
 scale = Vector2(0.606316, 0.606667)
 texture = ExtResource("3_u1yh8")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1151.4, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(576, 364)
+scale = Vector2(0.606316, 0.606667)
+texture = ExtResource("2_2pbdg")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.7, 0.7)
@@ -56,7 +52,7 @@ scale = Vector2(0.606316, 0.606667)
 texture = ExtResource("5_howb6")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.7, 0.7)
+motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(1151.4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer6"]
@@ -65,7 +61,7 @@ scale = Vector2(0.606316, 0.606667)
 texture = ExtResource("6_14cc2")
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.7, 0.7)
+motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(1151.4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer7"]
