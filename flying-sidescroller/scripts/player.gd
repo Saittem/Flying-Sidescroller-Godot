@@ -12,6 +12,7 @@ signal health_changed
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
 var invincibility_toggle : bool = false
+var death_screen = preload("res://death_screen.tscn")
 
 func _physics_process(delta) -> void:
 	get_input()
@@ -83,7 +84,13 @@ func change_health(health_difference: int) -> void:
 				if health_difference < 0:
 					toggle_invincibility()
 				if player_current_health <= 0:
-					pass
+					var test
+					test = death_screen.instantiate()
+					
+					# MAKE IT BE IN THE MIDDLE OF THE SCREEN
+					add_child(test)
+					
+					get_tree().paused = true
 		else:
 			deactivate_shield()
 			toggle_invincibility()
