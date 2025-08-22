@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6ec35xajm7fn"]
+
+[ext_resource type="Texture2D" uid="uid://c6jc8mpqfy5dl" path="res://sprites/meteor.png" id="1_j1wjr"]
+
+[node name="MeteorObstacle" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.222222, 0.222222)
+texture = ExtResource("1_j1wjr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-118, 30, -51, -84, 46, -107, 120, 24, 42, 116, -87, 88)
