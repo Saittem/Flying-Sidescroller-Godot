@@ -2,11 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://c6jc8mpqfy5dl" path="res://sprites/meteor.png" id="1_j1wjr"]
 
-[node name="MeteorObstacle" type="Area2D"]
+[node name="MeteorObstacle" type="Area2D" groups=["light_damage"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.222222, 0.222222)
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(0.114583, 0.114583)
 texture = ExtResource("1_j1wjr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(2.38419e-07, -2)
+scale = Vector2(0.522725, 0.522725)
 polygon = PackedVector2Array(-118, 30, -51, -84, 46, -107, 120, 24, 42, 116, -87, 88)
