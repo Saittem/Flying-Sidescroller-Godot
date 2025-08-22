@@ -7,16 +7,31 @@ extends Node
 @onready var hud := $"HUD"
 var health_up_object = preload("res://objects/health_up.tscn")
 var power_up_object = preload("res://objects/power_up.tscn")
+
+#level 1
 var bird_obstacle = preload("res://objects/bird_obstacle.tscn")
 var tree_obstacle = preload("res://objects/tree_obstacle.tscn")
+
+#level 2
+
+#level 3
+var meteor_obstacle = preload("res://objects/meteor_obstacle.tscn")
 var screen_size : Vector2i
 
-var obstacle_types := [bird_obstacle, tree_obstacle]
+var obstacle_types
 var power_up_types := [health_up_object, power_up_object]
 var objects : Array
 @export var speed: int = 10
 
 func _ready() -> void:
+	match self.name:
+		"Level_1":
+			obstacle_types = [bird_obstacle, tree_obstacle]
+		"Level_2":
+			pass
+		"Level_3":
+			obstacle_types = [meteor_obstacle]
+	print(self.name)
 	screen_size = get_window().size
 	object_spawn_timer.start()
 
@@ -67,5 +82,5 @@ func add_object(object, x, y) -> void:
 	objects.append(object)
 
 func remove_object(object) -> void:
-	object.queue_free()
 	objects.erase(object)
+	object.queue_free()
