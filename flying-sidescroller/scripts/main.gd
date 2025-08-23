@@ -22,6 +22,8 @@ var obstacle_types
 var power_up_types := [health_up_object, power_up_object]
 var objects : Array
 @export var speed: int = 10
+@export var max_distance = 10000
+var current_distance
 
 func _ready() -> void:
 	match self.name:
@@ -31,7 +33,10 @@ func _ready() -> void:
 			pass
 		"Level_3":
 			obstacle_types = [meteor_obstacle]
-	print(self.name)
+	
+	current_distance = hud.position.x
+	hud.get_node("ProgressBar/TextureProgressBar").max_value = max_distance
+	
 	screen_size = get_window().size
 	object_spawn_timer.start()
 
@@ -40,10 +45,16 @@ func _process(_delta) -> void:
 	hud.position.x += speed
 	boundary.position.x += speed
 	player.position.x += speed
+	current_distance += speed
 	
 	for object in objects:
 		if object.position.x < -(camera.position.x + screen_size.x / 2 + 100):
 			remove_object(object)
+	
+	hud.get_node("ProgressBar/TextureProgressBar").value = current_distance
+	
+	if current_distance >= max_distance:
+		get_tree().paused = true
 
 func _on_object_spawn_timer_timeout() -> void:
 	var rounded_time_str = str(snapped(object_spawn_timer.wait_time, 0.01))
