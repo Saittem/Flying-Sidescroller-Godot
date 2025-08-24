@@ -9,6 +9,8 @@
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_btoec")
+speed = null
+max_distance = null
 
 [node name="level_1_background" parent="." instance=ExtResource("1_vn7o3")]
 
@@ -18,11 +20,9 @@ script = ExtResource("1_btoec")
 position = Vector2(225, 329)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-z_index = 1
 position = Vector2(576, 324)
 
 [node name="DeathScreen" parent="Camera2D" instance=ExtResource("6_btoec")]
-visible = false
 offset_left = -576.0
 offset_top = -324.0
 offset_right = -576.0

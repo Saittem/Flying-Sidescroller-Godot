@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@onready var player := $"../../Player"
+@onready var player := $"../../../Player"
 
 func _ready() -> void:
 	player.health_changed.connect(updateHealthBar)

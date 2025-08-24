@@ -4,7 +4,7 @@ extends Node
 @onready var object_spawn_timer := $"ObjectSpawnTimer"
 @onready var boundary := $"Boundary"
 @onready var camera := $"Camera2D"
-@onready var hud := $"HUD"
+@onready var hud := $"Camera2D/HUD"
 var health_up_object = preload("res://objects/health_up.tscn")
 var power_up_object = preload("res://objects/power_up.tscn")
 
@@ -22,10 +22,11 @@ var obstacle_types
 var power_up_types := [health_up_object, power_up_object]
 var objects : Array
 @export var speed: int = 10
-@export var max_distance = 10000
+@export var max_distance = 100000
 var current_distance
 
 func _ready() -> void:
+	get_tree().paused = false
 	match self.name:
 		"Level_1":
 			obstacle_types = [bird_obstacle, tree_obstacle]
@@ -34,7 +35,7 @@ func _ready() -> void:
 		"Level_3":
 			obstacle_types = [meteor_obstacle]
 	
-	current_distance = hud.position.x
+	current_distance = camera.position.x
 	hud.get_node("ProgressBar/TextureProgressBar").max_value = max_distance
 	
 	screen_size = get_window().size
@@ -42,7 +43,6 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	camera.position.x += speed
-	hud.position.x += speed
 	boundary.position.x += speed
 	player.position.x += speed
 	current_distance += speed
