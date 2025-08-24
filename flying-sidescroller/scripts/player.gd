@@ -9,6 +9,8 @@ signal health_changed
 @onready var player_shield_animation = $ForceShieldAnimation
 @onready var player_particle_animation = $ParticleAnimation
 @onready var death_screen = $"../Camera2D/DeathScreen"
+@onready var death_audio = $"DeathSoundEffect"
+@onready var victory_audio = $"VictorySoundEffect"
 
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
@@ -84,6 +86,7 @@ func change_health(health_difference: int) -> void:
 				if health_difference < 0:
 					toggle_invincibility()
 				if player_current_health <= 0:
+					death_audio.play()
 					death_screen.visible = true
 					get_tree().paused = true
 		else:

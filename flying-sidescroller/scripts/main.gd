@@ -48,7 +48,7 @@ func _process(_delta) -> void:
 	current_distance += speed
 	
 	for object in objects:
-		if object.position.x < -(camera.position.x + screen_size.x / 2 + 100):
+		if object.position.x < (camera.position.x - screen_size.x / 2 - 100):
 			remove_object(object)
 	
 	hud.get_node("ProgressBar/TextureProgressBar").value = current_distance
