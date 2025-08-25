@@ -348,7 +348,9 @@ frame = 23
 frame_progress = 1.0
 
 [node name="DeathSoundEffect" type="AudioStreamPlayer" parent="."]
+process_mode = 2
 stream = ExtResource("5_3rerk")
+volume_db = -10.0
 
 [node name="VictorySoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_i825w")

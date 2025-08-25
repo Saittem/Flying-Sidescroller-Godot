@@ -66,14 +66,11 @@ func toggle_invincibility() -> void:
 		invincibility_toggle = true
 		for i in range(4):
 			player_animation_sprite.visible = !player_animation_sprite.visible
-			wait(0.5)
+			await get_tree().create_timer(0.2).timeout
 			player_animation_sprite.visible = !player_animation_sprite.visible
-			wait(1)
+			await get_tree().create_timer(0.4).timeout
 			print("cycle " + str(i))
 		toggle_invincibility()
-
-func wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout
 
 func change_health(health_difference: int) -> void:
 	if !invincibility_toggle:
@@ -86,9 +83,10 @@ func change_health(health_difference: int) -> void:
 				if health_difference < 0:
 					toggle_invincibility()
 				if player_current_health <= 0:
-					death_audio.play()
-					death_screen.visible = true
 					get_tree().paused = true
+					death_audio.play()
+					await get_tree().create_timer(0.5).timeout
+					death_screen.visible = true
 		else:
 			deactivate_shield()
 			toggle_invincibility()
