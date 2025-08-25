@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://uj2jc5wkphsg"]
+[gd_scene load_steps=6 format=3 uid="uid://uj2jc5wkphsg"]
 
 [ext_resource type="FontFile" uid="uid://dpy00fwcebpef" path="res://fonts/BoldPixels1.4.ttf" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://buxjf2bxs6yf0" path="res://menu.gd" id="1_mae5d"]
 [ext_resource type="FontFile" uid="uid://c5orqqc78h6cp" path="res://fonts/Pixel Game.otf" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://c1w1kxojsagr5" path="res://backgrounds/background.jpg" id="2_4hy44"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lti8b"]
 
@@ -15,24 +16,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mae5d")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(584, 331)
+scale = Vector2(0.614809, 0.614809)
+texture = ExtResource("2_4hy44")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
-offset_left = 25.0
-offset_top = 35.0
-offset_right = 454.0
-offset_bottom = 137.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -387.5
+offset_top = 82.185
+offset_right = 387.5
+offset_bottom = 184.185
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_ouk20")
 theme_override_font_sizes/font_size = 100
-text = "Godot Game"
+text = "Spaceship adventure"
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
-offset_left = 50.0
-offset_top = 208.0
-offset_right = 275.0
-offset_bottom = 351.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -71.5
+offset_right = 112.5
+offset_bottom = 71.5
+grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Start" type="Button" parent="MainMenu/VBoxContainer"]
@@ -41,7 +56,6 @@ theme_override_colors/font_hover_color = Color(1, 0.819608, 0.305882, 1)
 theme_override_colors/font_color = Color(0.925353, 0.925353, 0.925353, 1)
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxEmpty_lti8b")
 text = "Start"
 
 [node name="Options" type="Button" parent="MainMenu/VBoxContainer"]
@@ -106,6 +120,10 @@ text = "Level 3"
 
 [node name="Options" type="CanvasLayer" parent="."]
 visible = false
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Options" to="." method="_on_options_pressed"]
