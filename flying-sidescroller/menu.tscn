@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://uj2jc5wkphsg"]
+[gd_scene load_steps=8 format=3 uid="uid://uj2jc5wkphsg"]
 
 [ext_resource type="FontFile" uid="uid://dpy00fwcebpef" path="res://fonts/BoldPixels1.4.ttf" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://buxjf2bxs6yf0" path="res://menu.gd" id="1_mae5d"]
 [ext_resource type="FontFile" uid="uid://c5orqqc78h6cp" path="res://fonts/Pixel Game.otf" id="1_ouk20"]
 [ext_resource type="Texture2D" uid="uid://c1w1kxojsagr5" path="res://backgrounds/background.jpg" id="2_4hy44"]
+[ext_resource type="AudioStream" uid="uid://bu6p647tbupit" path="res://sounds/click-21156.mp3" id="5_l48gv"]
+[ext_resource type="AudioStream" uid="uid://c0axigqcnbfw5" path="res://sounds/button.mp3" id="6_ecwwl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lti8b"]
 
@@ -122,12 +124,13 @@ text = "Level 3"
 visible = false
 
 [node name="HoverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l48gv")
+volume_db = -5.0
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ecwwl")
+volume_db = -5.0
 
-[connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Levels/HBoxContainer/Level1/Level1Button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="Levels/HBoxContainer/Level2/Level2Button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="Levels/HBoxContainer/Level3/Level3Button" to="." method="_on_level_3_button_pressed"]
