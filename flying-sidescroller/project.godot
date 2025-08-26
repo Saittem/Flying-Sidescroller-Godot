@@ -14,6 +14,10 @@ config/name="Flying-Sidescroller"
 run/main_scene="uid://uj2jc5wkphsg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+Global="*res://global.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
