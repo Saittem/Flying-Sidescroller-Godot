@@ -1,6 +1,6 @@
 extends Control
 
-var menu_scene = preload("res://menu.tscn")
+var menu_scene = "res://menu.tscn"
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
