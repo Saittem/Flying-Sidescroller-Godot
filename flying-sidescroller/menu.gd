@@ -17,6 +17,11 @@ extends Control
 @onready var options_button = $"MainMenu/VBoxContainer/Options"
 @onready var quit_button = $"MainMenu/VBoxContainer/Quit"
 
+#Best progress labels
+@onready var best_progress_level_1_label = $"Levels/Level1/BestProgress"
+@onready var best_progress_level_2_label = $"Levels/Level2/BestProgress"
+@onready var best_progress_level_3_label = $"Levels/Level3/BestProgress"
+
 func _ready() -> void:
 	start_button.connect("pressed", Callable(self, "_button_pressed").bind(start_button))
 	options_button.connect("pressed", Callable(self, "_button_pressed").bind(options_button))
@@ -25,6 +30,10 @@ func _ready() -> void:
 	start_button.mouse_entered.connect(_button_mouse_entered)
 	options_button.mouse_entered.connect(_button_mouse_entered)
 	quit_button.mouse_entered.connect(_button_mouse_entered)
+	
+	best_progress_level_1_label = "Best: " + str(Global.best_progress_level_1)
+	best_progress_level_2_label = "Best: " + str(Global.best_progress_level_2)
+	best_progress_level_3_label = "Best: " + str(Global.best_progress_level_3)
 
 #Buttons
 func _button_pressed(button):

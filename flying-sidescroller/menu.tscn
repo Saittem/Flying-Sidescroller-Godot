@@ -41,7 +41,6 @@ theme_override_font_sizes/font_size = 100
 text = "Spaceship adventure"
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 anchors_preset = 8
@@ -83,6 +82,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_lti8b")
 text = "Quit"
 
 [node name="Levels" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Level1Image" type="TextureRect" parent="Levels"]
 anchors_preset = 4
@@ -108,7 +108,7 @@ layout_mode = 2
 text = "Level 1: The Forest"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Levels/Level1"]
+[node name="BestProgress" type="Label" parent="Levels/Level1"]
 layout_mode = 2
 text = "Best: 0%"
 horizontal_alignment = 1
@@ -151,7 +151,7 @@ layout_mode = 2
 text = "Level 2: The Mountains"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Levels/Level2"]
+[node name="BestProgress" type="Label" parent="Levels/Level2"]
 layout_mode = 2
 text = "Best: 0%"
 horizontal_alignment = 1
@@ -194,7 +194,7 @@ layout_mode = 2
 text = "Level 1: The Forest"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Levels/Level3"]
+[node name="BestProgress" type="Label" parent="Levels/Level3"]
 layout_mode = 2
 text = "Best: 0%"
 horizontal_alignment = 1
