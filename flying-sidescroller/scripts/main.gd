@@ -55,6 +55,7 @@ func _process(_delta) -> void:
 	
 	if current_distance >= max_distance:
 		get_tree().paused = true
+		camera.get_node("VictoryScreen").visible = true
 
 func _on_object_spawn_timer_timeout() -> void:
 	var rounded_time_str = str(snapped(object_spawn_timer.wait_time, 0.01))
