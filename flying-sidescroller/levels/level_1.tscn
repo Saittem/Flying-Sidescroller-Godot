@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cecnfq0wo0b0w"]
+[gd_scene load_steps=8 format=3 uid="uid://cecnfq0wo0b0w"]
 
 [ext_resource type="Script" uid="uid://dkm8nsw37ut5x" path="res://scripts/main.gd" id="1_btoec"]
 [ext_resource type="PackedScene" uid="uid://cnc1kq8ndkl6c" path="res://backgrounds/background_scenes/level_1_background.tscn" id="1_vn7o3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpgokwdjxrigt" path="res://objects/boundary.tscn" id="3_bt44k"]
 [ext_resource type="PackedScene" uid="uid://bvoxjucdyfiif" path="res://hud.tscn" id="4_kx6l7"]
 [ext_resource type="PackedScene" uid="uid://cwiiwkfpfb721" path="res://death_screen.tscn" id="6_btoec"]
+[ext_resource type="PackedScene" uid="uid://jt5gf2ge86im" path="res://victory_screen.tscn" id="7_gwceb"]
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_btoec")
@@ -33,6 +34,10 @@ offset_left = -576.0
 offset_top = -324.0
 offset_right = -576.0
 offset_bottom = -324.0
+
+[node name="VictoryScreen" parent="Camera2D" instance=ExtResource("7_gwceb")]
+process_mode = 2
+visible = false
 
 [node name="ObjectSpawnTimer" type="Timer" parent="."]
 

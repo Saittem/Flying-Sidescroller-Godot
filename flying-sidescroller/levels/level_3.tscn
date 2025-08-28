@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbn4aqnhbjtwc"]
+[gd_scene load_steps=8 format=3 uid="uid://dbn4aqnhbjtwc"]
 
 [ext_resource type="Script" uid="uid://dkm8nsw37ut5x" path="res://scripts/main.gd" id="1_20opy"]
 [ext_resource type="PackedScene" uid="uid://cmp5axnr8gjst" path="res://backgrounds/background_scenes/level_3_background.tscn" id="2_8l0e1"]
 [ext_resource type="PackedScene" uid="uid://bvoxjucdyfiif" path="res://hud.tscn" id="3_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://bpgokwdjxrigt" path="res://objects/boundary.tscn" id="4_ofchu"]
 [ext_resource type="PackedScene" uid="uid://b40hks2sfoav1" path="res://objects/player.tscn" id="5_jq78i"]
+[ext_resource type="PackedScene" uid="uid://cwiiwkfpfb721" path="res://death_screen.tscn" id="6_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://jt5gf2ge86im" path="res://victory_screen.tscn" id="7_ofchu"]
 
 [node name="Level_3" type="Node2D"]
 script = ExtResource("1_20opy")
@@ -19,7 +21,25 @@ script = ExtResource("1_20opy")
 position = Vector2(225, 329)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 1
 position = Vector2(576, 324)
+
+[node name="DeathScreen" parent="Camera2D" instance=ExtResource("6_lfnxh")]
+visible = false
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+
+[node name="HUD" parent="Camera2D" instance=ExtResource("3_lfnxh")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+
+[node name="VictoryScreen" parent="Camera2D" instance=ExtResource("7_ofchu")]
+process_mode = 2
+visible = false
 
 [node name="ObjectSpawnTimer" type="Timer" parent="."]
 
