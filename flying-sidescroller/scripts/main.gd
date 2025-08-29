@@ -8,6 +8,8 @@ extends Node
 var health_up_object = preload("res://objects/health_up.tscn")
 var power_up_object = preload("res://objects/power_up.tscn")
 
+signal game_over
+
 #level 1
 var bird_obstacle = preload("res://objects/bird_obstacle.tscn")
 var tree_obstacle = preload("res://objects/tree_obstacle.tscn")
@@ -56,6 +58,7 @@ func _process(_delta) -> void:
 	if current_distance >= max_distance:
 		get_tree().paused = true
 		camera.get_node("VictoryScreen").visible = true
+		game_over.emit()
 
 func _on_object_spawn_timer_timeout() -> void:
 	var rounded_time_str = str(snapped(object_spawn_timer.wait_time, 0.01))

@@ -3,7 +3,6 @@ extends CharacterBody2D
 class_name Player
 
 signal health_changed
-signal game_over
 
 @export var player_movement_speed: float = 500
 @onready var player_animation_sprite = $PlayerAnimation
