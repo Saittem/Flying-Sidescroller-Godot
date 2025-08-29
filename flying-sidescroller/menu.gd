@@ -23,6 +23,8 @@ extends Control
 @onready var best_progress_level_3_label = $"Levels/Level3/BestProgress"
 
 func _ready() -> void:
+	get_tree().paused = false
+	
 	start_button.connect("pressed", Callable(self, "_button_pressed").bind(start_button))
 	options_button.connect("pressed", Callable(self, "_button_pressed").bind(options_button))
 	quit_button.connect("pressed", Callable(self, "_button_pressed").bind(quit_button))
@@ -31,9 +33,9 @@ func _ready() -> void:
 	options_button.mouse_entered.connect(_button_mouse_entered)
 	quit_button.mouse_entered.connect(_button_mouse_entered)
 	
-	best_progress_level_1_label = "Best: " + str(Global.best_progress_level_1)
-	best_progress_level_2_label = "Best: " + str(Global.best_progress_level_2)
-	best_progress_level_3_label = "Best: " + str(Global.best_progress_level_3)
+	best_progress_level_1_label.text = "Best: " + str(Global.best_progress_level_1) + "%"
+	best_progress_level_2_label.text = "Best: " + str(Global.best_progress_level_2) + "%"
+	best_progress_level_3_label.text = "Best: " + str(Global.best_progress_level_3) + "%"
 
 #Buttons
 func _button_pressed(button):
