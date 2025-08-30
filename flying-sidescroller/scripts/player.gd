@@ -17,6 +17,7 @@ signal health_changed
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
 var invincibility_toggle : bool = false
+var player_state : String
 
 func _physics_process(delta) -> void:
 	get_input()
@@ -56,11 +57,16 @@ func _on_particle_animation_animation_finished() -> void:
 
 func update_animation() -> void:
 	if velocity.y > 0:
-		player_animation_sprite.play("down")
+		if player_state != "down":
+			player_animation_sprite.play("down")
+			player_state = "down"
 	elif velocity.y < 0:
-		player_animation_sprite.play("up")
+		if player_state != "up":
+			player_animation_sprite.play("up")
+			player_state = "up"
 	else:
 		player_animation_sprite.play("idle")
+		player_state = "idle"
 
 func toggle_invincibility() -> void:
 	if invincibility_toggle:
