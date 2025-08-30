@@ -11,6 +11,8 @@ signal health_changed
 @onready var death_screen = $"../Camera2D/DeathScreen"
 @onready var death_audio = $"DeathSoundEffect"
 @onready var victory_audio = $"VictorySoundEffect"
+@onready var hit_audio = $HitSoundEffect
+@onready var power_up_audio = $PowerUpSoundEffect
 
 const PLAYER_MAX_HEALTH : int = 100
 var player_current_health : int = PLAYER_MAX_HEALTH
@@ -41,6 +43,7 @@ func get_input() -> void:
 		velocity.y = velocity.move_toward(Vector2.ZERO, player_movement_speed).y
 
 func activate_shield() -> void:
+	power_up_audio.play()
 	player_shield_animation.visible = true
 
 func deactivate_shield() -> void:
@@ -82,6 +85,7 @@ func change_health(health_difference: int) -> void:
 				health_changed.emit()
 				if health_difference < 0:
 					toggle_invincibility()
+					hit_audio.play()
 				if player_current_health <= 0:
 					get_tree().paused = true
 					death_audio.play()
