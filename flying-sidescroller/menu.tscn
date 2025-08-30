@@ -206,6 +206,54 @@ text = "Play Level"
 [node name="Options" type="CanvasLayer" parent="."]
 visible = false
 
+[node name="GridContainer" type="GridContainer" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -47.0
+offset_right = 114.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="SoundsLabel" type="Label" parent="Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Sounds: "
+
+[node name="SoundsToggle" type="CheckButton" parent="Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+button_pressed = true
+
+[node name="SoundState" type="Label" parent="Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "On"
+
+[node name="SaveLabel" type="Label" parent="Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Save:"
+
+[node name="SaveToggle" type="CheckButton" parent="Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+button_pressed = true
+
+[node name="SaveState" type="Label" parent="Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "On"
+
 [node name="HoverAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_l48gv")
 volume_db = -5.0
@@ -214,6 +262,22 @@ volume_db = -5.0
 stream = ExtResource("6_ecwwl")
 volume_db = -5.0
 
+[node name="BackButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -64.0
+offset_right = 94.0
+offset_bottom = -33.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 32
+text = "<- Back"
+
 [connection signal="pressed" from="Levels/Level1/Level1Button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="Levels/Level2/Level2Button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="Levels/Level3/Level3Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
