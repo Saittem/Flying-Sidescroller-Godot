@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwiiwkfpfb721"]
+[gd_scene load_steps=7 format=3 uid="uid://cwiiwkfpfb721"]
 
 [ext_resource type="Script" uid="uid://bipmrjqfv5oxc" path="res://death_screen.gd" id="1_if853"]
+[ext_resource type="AudioStream" uid="uid://bu6p647tbupit" path="res://sounds/click-21156.mp3" id="2_6bi5g"]
+[ext_resource type="FontFile" uid="uid://c5orqqc78h6cp" path="res://fonts/Pixel Game.otf" id="2_hhlqb"]
+[ext_resource type="Theme" uid="uid://cuc2rnimi3qbt" path="res://theme.tres" id="3_f562y"]
+[ext_resource type="AudioStream" uid="uid://c0axigqcnbfw5" path="res://sounds/button.mp3" id="3_y0ggs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bi5g"]
+bg_color = Color(0.190762, 0.190762, 0.190762, 1)
 
 [node name="DeathScreen" type="Control"]
 process_mode = 2
@@ -12,13 +19,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_if853")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 346.0
+offset_top = 146.0
+offset_right = 803.0
+offset_bottom = 463.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6bi5g")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-offset_left = 415.0
+offset_left = 393.53
 offset_top = 180.0
-offset_right = 738.0
-offset_bottom = 283.0
-theme_override_font_sizes/font_size = 75
+offset_right = 758.53
+offset_bottom = 302.0
+theme_override_fonts/font = ExtResource("2_hhlqb")
+theme_override_font_sizes/font_size = 120
 text = "You Died"
 
 [node name="HBoxContainer" type="BoxContainer" parent="."]
@@ -32,13 +48,21 @@ vertical = true
 
 [node name="RestartButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("3_f562y")
 text = "Restart"
 
 [node name="MenuButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("3_f562y")
 text = "Menu"
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6bi5g")
+volume_db = -5.0
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_y0ggs")
+volume_db = -5.0
 
 [connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
