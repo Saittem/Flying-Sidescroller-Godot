@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 signal health_changed
+signal player_died
 
 @export var player_movement_speed: float = 500
 @onready var player_animation_sprite = $PlayerAnimation
@@ -78,7 +79,7 @@ func toggle_invincibility() -> void:
 			await get_tree().create_timer(0.2).timeout
 			player_animation_sprite.visible = !player_animation_sprite.visible
 			await get_tree().create_timer(0.4).timeout
-			print("cycle " + str(i))
+			#print("cycle " + str(i))
 		toggle_invincibility()
 
 func change_health(health_difference: int) -> void:
@@ -97,6 +98,7 @@ func change_health(health_difference: int) -> void:
 					death_audio.play()
 					await get_tree().create_timer(0.5).timeout
 					death_screen.visible = true
+					player_died.emit()
 		else:
 			deactivate_shield()
 			toggle_invincibility()

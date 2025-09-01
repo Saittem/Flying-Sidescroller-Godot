@@ -9,6 +9,7 @@ var edited_value : int
 
 func _ready() -> void:
 	level_node.game_over.connect(save_best_progress)
+	player.player_died.connect(save_best_progress)
 
 func _on_texture_progress_bar_value_changed(value: float) -> void:
 	edited_value = value / 1000
@@ -19,7 +20,6 @@ func save_best_progress():
 		"Level_1":
 			if Global.best_progress_level_1 < edited_value:
 				Global.best_progress_level_1 = edited_value
-				print(Global.best_progress_level_1)
 		"Level_2":
 			if Global.best_progress_level_2 < edited_value:
 				Global.best_progress_level_2 = edited_value

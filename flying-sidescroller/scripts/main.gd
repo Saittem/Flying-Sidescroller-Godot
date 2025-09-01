@@ -62,7 +62,7 @@ func _process(_delta) -> void:
 
 func _on_object_spawn_timer_timeout() -> void:
 	var rounded_time_str = str(snapped(object_spawn_timer.wait_time, 0.01))
-	print("Timer ended: " + rounded_time_str + "s")
+	#print("Timer ended: " + rounded_time_str + "s")
 	generate_object()
 	object_spawn_timer.wait_time = randf_range(1.0, 2.25)
 
@@ -87,8 +87,8 @@ func generate_object() -> void:
 			object_y = randi_range(50, screen_size.y - 100)
 	
 	var object_str = str(object).left(-21)
-	print(str("Spawned: " + object_str))
-	print("Y: " + str(object_y))
+	#print(str("Spawned: " + object_str))
+	#print("Y: " + str(object_y))
 	add_object(object, object_x, object_y)
 
 func add_object(object, x, y) -> void:
