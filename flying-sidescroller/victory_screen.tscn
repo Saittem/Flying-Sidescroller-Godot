@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://jt5gf2ge86im"]
+[gd_scene load_steps=7 format=3 uid="uid://jt5gf2ge86im"]
 
 [ext_resource type="Script" uid="uid://26hokd75x5ag" path="res://victory_screen.gd" id="1_rbj82"]
+[ext_resource type="FontFile" uid="uid://c5orqqc78h6cp" path="res://fonts/Pixel Game.otf" id="2_ik8t4"]
+[ext_resource type="AudioStream" uid="uid://bu6p647tbupit" path="res://sounds/click-21156.mp3" id="2_r8dr5"]
+[ext_resource type="Theme" uid="uid://cuc2rnimi3qbt" path="res://theme.tres" id="2_rax26"]
+[ext_resource type="AudioStream" uid="uid://c0axigqcnbfw5" path="res://sounds/button.mp3" id="3_rax26"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik8t4"]
+bg_color = Color(0.192157, 0.192157, 0.192157, 1)
 
 [node name="VictoryScreen" type="Control"]
 layout_mode = 3
@@ -11,7 +18,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rbj82")
 
-[node name="Label" type="Label" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.5
+offset_top = -193.0
+offset_right = 273.5
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ik8t4")
+
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,15 +41,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -161.5
-offset_top = -132.53
+offset_top = -101.755
 offset_right = 161.5
-offset_bottom = -29.53
+offset_bottom = 1.245
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 75
+theme_override_fonts/font = ExtResource("2_ik8t4")
+theme_override_font_sizes/font_size = 120
 text = "You Won"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,12 +60,21 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -125.0
-offset_top = -26.5
+offset_top = 15.415
 offset_right = 125.0
-offset_bottom = 26.5
+offset_bottom = 68.415
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("2_rax26")
 text = "Menu"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="HoverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r8dr5")
+volume_db = -5.0
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rax26")
+volume_db = -5.0
+
+[connection signal="mouse_entered" from="Panel/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
