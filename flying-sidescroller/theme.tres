@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cuc2rnimi3qbt"]
+
+[ext_resource type="FontFile" uid="uid://dpy00fwcebpef" path="res://fonts/BoldPixels1.4.ttf" id="1_e1x85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvktn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/colors/font_color = Color(0.92549, 0.92549, 0.92549, 1)
+Button/colors/font_hover_color = Color(1, 0.819608, 0.305882, 1)
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_e1x85")
+Button/styles/normal = SubResource("StyleBoxFlat_wvktn")

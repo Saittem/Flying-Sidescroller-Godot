@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://da0i20nrm7bej"]
+
+[ext_resource type="FontFile" uid="uid://dpy00fwcebpef" path="res://fonts/BoldPixels1.4.ttf" id="1_ikayp"]
+
+[resource]
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("1_ikayp")
