@@ -13,12 +13,12 @@ func _ready() -> void:
 	menu_button.mouse_entered.connect(_button_mouse_entered)
 
 func _on_restart_button_pressed() -> void:
-	get_tree().reload_current_scene()
 	click_audio.play()
+	get_tree().reload_current_scene()
 
 func _on_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file(menu_scene)
 	click_audio.play()
+	get_tree().change_scene_to_file(menu_scene)
 
 func _button_mouse_entered():
 	hover_audio.play()

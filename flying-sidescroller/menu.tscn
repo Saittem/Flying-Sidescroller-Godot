@@ -41,7 +41,6 @@ theme_override_font_sizes/font_size = 100
 text = "Spaceship adventure"
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 anchors_preset = 8
@@ -206,6 +205,7 @@ theme_override_font_sizes/font_size = 35
 text = "Play Level"
 
 [node name="Options" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GridContainer" type="GridContainer" parent="Options"]
 anchors_preset = 8

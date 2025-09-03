@@ -59,6 +59,11 @@ func _ready() -> void:
 	best_progress_level_1_label.text = "Best: " + str(Global.best_progress_level_1) + "%"
 	best_progress_level_2_label.text = "Best: " + str(Global.best_progress_level_2) + "%"
 	best_progress_level_3_label.text = "Best: " + str(Global.best_progress_level_3) + "%"
+	
+	await get_tree().create_timer(0.1).timeout
+	toggle_sound_option()
+	toggle_save_option()
+	print(Global.save_toggle)
 
 #Buttons
 func _button_pressed(button):
@@ -73,6 +78,8 @@ func _button_pressed(button):
 			menu_layer.visible = false
 			option_layer.visible = true
 		"Quit":
+			if Global.save_toggle:
+				Global.save_game.emit()
 			get_tree().quit()
 
 func _button_mouse_entered():
@@ -81,22 +88,44 @@ func _button_mouse_entered():
 #Toggle
 func _toggle_pressed(toggle_button):
 	click_audio.play()
+	var master_bus_index = AudioServer.get_bus_index("Master")
 	
 	match toggle_button.name:
 		"SoundsToggle":
 			Global.sound_toggle = !Global.sound_toggle
-			
 			if Global.sound_toggle:
 				sound_state_label.text = "On"
+				AudioServer.set_bus_mute(master_bus_index, false)
 			else:
 				sound_state_label.text = "Off"
+				AudioServer.set_bus_mute(master_bus_index, true)
 		"SaveToggle":
 			Global.save_toggle = !Global.save_toggle
-			
 			if Global.save_toggle:
 				save_state_label.text = "On"
 			else:
 				save_state_label.text = "Off"
+
+
+func toggle_sound_option():
+	var master_bus_index = AudioServer.get_bus_index("Master")
+	
+	if Global.sound_toggle:
+		sound_state_label.text = "On"
+		sound_toggle.button_pressed = true
+		AudioServer.set_bus_mute(master_bus_index, false)
+	else:
+		sound_state_label.text = "Off"
+		sound_toggle.button_pressed = false
+		AudioServer.set_bus_mute(master_bus_index, true)
+
+func toggle_save_option():
+	if Global.save_toggle:
+		save_state_label.text = "On"
+		save_toggle.button_pressed = true
+	else:
+		save_state_label.text = "Off"
+		save_toggle.button_pressed = false
 
 # Level buttons
 func _on_level_1_button_pressed() -> void:
